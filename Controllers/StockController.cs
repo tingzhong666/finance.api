@@ -3,6 +3,7 @@ using finance.api.DTOs.Stock;
 using finance.api.Interfaces;
 using finance.api.Mappers;
 using finance.api.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +23,7 @@ namespace finance.api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAll()
         {
             var stocks = await stockRepository.GetAllAsync();
